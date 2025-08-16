@@ -63,13 +63,13 @@ async fn main() {
     let json_tournaments: Value = serde_json::from_str(&tournaments).unwrap();
     let mut all_images: HashSet<String> = HashSet::new();
 
-    let mut mailing_list = mailing_list::MailingListService::new()
-        .inspect_err(|e| {
-            log_warn("email", "Mailing list service init failed");
-            log_warn("email", "Mailing list service init failed");
-            log_warn("email", &format!("{:?}", e));
-        })
-        .ok();
+    // let mut mailing_list = mailing_list::MailingListService::new()
+    //     .inspect_err(|e| {
+    //         log_warn("email", "Mailing list service init failed");
+    //         log_warn("email", "Mailing list service init failed");
+    //         log_warn("email", &format!("{:?}", e));
+    //     })
+    //     .ok();
 
     match json_tournaments {
         Value::Array(vec) => {
@@ -100,28 +100,28 @@ async fn main() {
                 calendar_ics = generate_calendar(tournament_data.clone(), &mut calendar_ics);
                 log_success("calendar", "generated ICS event");
 
-                if let Some(ref mut service) = mailing_list {
-                    service
-                        .schedule_reminder_broadcast(&tournament_data)
-                        .await
-                        .or_else(|e| {
-                            log_error("email", "Failed to schedule reminder broadcast");
-                            log_red(&e.to_string());
-                            Err(e)
-                        })
-                        .ok();
-                    service
-                        .schedule_top8_broadcast(&tournament_data)
-                        .await
-                        .or_else(|e| {
-                            log_error("email", "Failed to schedule top-8 broadcast");
-                            log_red(&e.to_string());
-                            Err(e)
-                        })
-                        .ok();
-                } else {
-                    log_warn("email", "Skipping email scheduling");
-                }
+                // if let Some(ref mut service) = mailing_list {
+                //     service
+                //         .schedule_reminder_broadcast(&tournament_data)
+                //         .await
+                //         .or_else(|e| {
+                //             log_error("email", "Failed to schedule reminder broadcast");
+                //             log_red(&e.to_string());
+                //             Err(e)
+                //         })
+                //         .ok();
+                //     service
+                //         .schedule_top8_broadcast(&tournament_data)
+                //         .await
+                //         .or_else(|e| {
+                //             log_error("email", "Failed to schedule top-8 broadcast");
+                //             log_red(&e.to_string());
+                //             Err(e)
+                //         })
+                //         .ok();
+                // } else {
+                //     log_warn("email", "Skipping email scheduling");
+                // }
 
                 if bail {
                     std::process::exit(0)
@@ -132,7 +132,7 @@ async fn main() {
     }
     index_html.push_str(&format!("\n{}", index_footer_html));
     make_site(&index_html);
-    make_calendar(calendar_ics);
+    // make_calendar(calendar_ics);
     cleanup_images(all_images);
     next_steps();
 }

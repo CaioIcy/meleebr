@@ -7,15 +7,13 @@
     </tr>
 </table>
 
-# <img src="site/assets/favicon/favicon.webp" height="25px"> meleemajors.gg
+# 🍔 meleebr majors
 
-> the successor to meleemajors.com
-
-a big thanks to [smash calendar](https://docs.google.com/spreadsheets/d/1rkmvlCvjjrugbbAd_28hOIrFQOxn6EAVuc93Ws-0cA0/edit?usp=sharing), which we pull most of our tournament info from!
+forked from [meleemajors.gg](https://github.com/jtof-dev/meleemajors.gg), huge thanks to them
 
 ## contributing
 
-- are we missing a tournament, or have incorrect information? you can either open an [issue](https://github.com/jtof-dev/meleemajors.gg/issues) with what we are missing, or make a [pull request](https://github.com/jtof-dev/meleemajors.gg/pulls) with an updated [tournaments.json](ssg/src/tournaments.json)
+- are we missing a tournament, or have incorrect information? you can either open an [issue](https://github.com/caioicy/meleebr/issues) with what we are missing, or make a [pull request](https://github.com/caioicy/meleebr/pulls) with an updated [tournaments.json](ssg/src/tournaments.json)
   - for a quick rundown on formatting `tournaments.json`, check out our [contributing documentation](CONTRIBUTING.md)
 
 ## backend
@@ -109,7 +107,3 @@ cargo run -- --generate
 
 - we use [umami](https://umami.is/) for basic analytics, like daily site views and how visitors interact with the website. while this could be useful improving the website, this is mostly because we want to know how much the website is getting used
 - these analytics are completely anonymous (at least to us), and just let us dig around with how the website actually gets used
-
-## meleemajors.com
-
-- a sample copy of `meleemajors.com` scraped from the wayback machine can be found [here](https://github.com/jtof-dev/meleemajors.gg/tree/meleemajors.com), taken from [the wayback machine](https://web.archive.org/web/20221202045414/https://www.meleemajors.com/)
