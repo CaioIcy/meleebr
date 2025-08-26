@@ -39,7 +39,8 @@ pub fn replace_placeholder_values(data: &Value, template: &str) -> String {
                 &match value {
                     Value::String(file_type_string) => file_type_string.to_owned(),
                     Value::Number(file_type_number) => file_type_number.to_string(),
-                    _ => panic!(),
+                    Value::Null => String::new(),
+                    _ => String::new(),
                 },
             )
         })

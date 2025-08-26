@@ -166,7 +166,7 @@ async fn scrape_data(
     .await;
 
     let tournament_info = &result_tournament_info["tournament"];
-    // println!("{tournament_info}");
+    println!("{tournament_info}");
 
     let name = tournament_info["name"].as_str().unwrap(); // ---> result
 
@@ -205,15 +205,15 @@ async fn scrape_data(
         .pad_using(8, |_| "TBD")
         .collect::<Vec<&str>>();
 
-    let entrant_count = result_entrant_count["event"]["numEntrants"].as_number();
+    let entrant_count = result_entrant_count["event"]["numEntrants"].as_u64();
     let entrant_count_string = match entrant_count {
-        Some(entrant_count) => entrant_count.to_string(),
+        Some(entrant_count) => if entrant_count >= 8 { entrant_count.to_string() } else { "TBD".to_string() },
         None => "TBD".to_string(),
     }; // ---> result
 
     let timezone: Tz = tournament_info["timezone"]
         .as_str()
-        .unwrap()
+        .unwrap_or("America/Sao_Paulo")
         .parse()
         .expect("Invalid timezone");
 
@@ -224,12 +224,12 @@ async fn scrape_data(
     let date = format!("{start_date} - {end_date}"); // ---> result
 
     // let city = tournament_info["city"].as_str().unwrap();
-    let city = tournament_info["city"].as_str().unwrap_or("Unknown");
-    let state = tournament_info["addrState"].as_str().unwrap();
+    let city = tournament_info["city"].as_str().unwrap_or("Online");
+    let state = tournament_info["addrState"].as_str().unwrap_or("Slippi");
 
     let city_and_state = format!("{}, {}", city, state); // ---> result
 
-    let address = tournament_info["venueAddress"].as_str().unwrap();
+    let address = tournament_info["venueAddress"].as_str().unwrap_or("Unknown");
 
     let banner_images = tournament_info["images"].as_array().unwrap();
     let banner_image_largest = banner_images
