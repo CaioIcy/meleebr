@@ -3,7 +3,11 @@
     "start.gg-melee-singles-url": "https://www.start.gg/tournament/treta-championship-2025/event/super-smash-bros-melee-1v1",
     "top8-start-time": "",
     "schedule-url": "",
-    "stream-url": ""
+    "stream-url": "",
+    "player0": "Zen",
+    "player1": "Not",
+    "player2": "Boleto",
+    "player3": "Charuto"
   },
   {
     "start.gg-melee-singles-url": "https://www.start.gg/tournament/piramide-9/event/melee-doubles",
@@ -27,6 +31,14 @@
     "start.gg-melee-singles-url": "https://www.start.gg/tournament/battle-coliseum-2025/event/super-smash-bros-ultimate-switch",
     "top8-start-time": "",
     "schedule-url": "",
-    "stream-url": ""
+    "stream-url": "",
+    "player0": "Rocket",
+    "player1": "caioicy",
+    "player2": "Zen",
+    "player3": "ludecoli",
+    "player4": "Trap$tarFox",
+    "player5": "Ehro",
+    "player6": "Gio",
+    "player7": "TXR"
   }
 ]
